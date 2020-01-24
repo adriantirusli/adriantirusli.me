@@ -1,8 +1,18 @@
+let activeEnv =
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
+
+console.log(`Using environment config: '${activeEnv}'`)
+
+require("dotenv").config({
+  path: `.env.${activeEnv}`,
+})
+
+console.log(`This WordPress Endpoint is used: '${process.env.BASE_URL}'`)
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `punya orang.`,
+    description: `Blog aja ini.`,
+    author: `@adriantirusli`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -25,6 +35,14 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        typeName: "WPGraphQL",
+        fieldName: "wpgraphql",
+        url: `${process.env.BASE_URL}/graphql`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

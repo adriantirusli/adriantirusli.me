@@ -620,3 +620,9 @@ pre tt:after {
     font-size: 100%;
   }
 }
+main{
+  min-height: calc(100vh - 230px);
+}
+footer{
+  height: 30px;
+}
