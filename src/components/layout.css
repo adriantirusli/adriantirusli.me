@@ -626,7 +626,7 @@ pre tt:after {
 }
 main{
   min-height: calc(100vh - 300px);
-  height: calc(100vh - 300px);
+  height: calc(100vh - 260px);
   display: table-cell;
   vertical-align: middle;
 }
