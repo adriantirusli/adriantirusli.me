@@ -11,4 +11,4 @@ $ yarn build
 ```
 
 # License
-[link to Google!](https://github.com/adriantirusli/my-blog/blob/master/LICENSE)
+[MIT](https://github.com/adriantirusli/my-blog/blob/master/LICENSE)
