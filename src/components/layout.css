@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Domine:400,700&display=swap');
+
 html {
-  font-family: sans-serif;
+  font-family: 'Domine', serif, sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  background-color: #343a40;
 }
 body {
   margin: 0;
@@ -42,6 +45,7 @@ template {
 a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
+  color: white;
 }
 a:active,
 a:hover {
@@ -199,7 +203,7 @@ html {
   box-sizing: inherit;
 }
 body {
-  color: hsla(0, 0%, 0%, 0.8);
+  color: white;
   font-family: georgia, serif;
   font-weight: normal;
   word-wrap: break-word;
@@ -621,8 +625,14 @@ pre tt:after {
   }
 }
 main{
-  min-height: calc(100vh - 230px);
+  min-height: calc(100vh - 300px);
+  height: calc(100vh - 300px);
+  display: table-cell;
+  vertical-align: middle;
 }
 footer{
   height: 30px;
+}
+.navigation a:not(:last-child){
+  margin-right: 1.25rem;
 }

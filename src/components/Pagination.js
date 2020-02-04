@@ -8,7 +8,6 @@ const Pagination = ({ pageNumber, hasNextPage }) => {
 
   return (
     <div style={{ margin: "60px auto", textAlign: "center" }}>
-      <h2>Posts navigation</h2>
       <div>
         {
           pageNumber > 1 && (
@@ -21,12 +20,12 @@ const Pagination = ({ pageNumber, hasNextPage }) => {
               }}
               to={pageNumber > 2 ? `${blogURI}/page/${pageNumber - 1}` : `${blogURI}/`}
             >
-              <span>Previous page</span>
+              <span>laman sebelumnya</span>
             </Link>
           )
         }
         <span aria-current="page" className="page-numbers current" style={{ padding: "5px 10px" }}>
-          <span className="meta-nav screen-reader-text">Page </span>
+          <span className="meta-nav screen-reader-text">laman </span>
           {pageNumber}
         </span>
 
@@ -42,7 +41,7 @@ const Pagination = ({ pageNumber, hasNextPage }) => {
               to={`${blogURI}/page/${pageNumber + 1}`
               }
             >
-              <span>Next page </span>
+              <span>laman selanjutnya </span>
             </Link>
           )
         }

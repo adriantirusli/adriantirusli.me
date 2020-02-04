@@ -10,7 +10,7 @@ const PostEntry = ({ post }) => {
   return (
     <div style={{ marginBottom: "30px" }}>
       <header>
-        <Link to={`${blogURI}/${uri}/`}>
+        <Link to={`${blogURI}/${uri}/`} style={{textDecoration:`none`}}>
           <h2 style={{ marginBottom: "5px" }}>{title}</h2>
           <Image image={featuredImage} style={{ margin: 0 }}/>
         </Link>

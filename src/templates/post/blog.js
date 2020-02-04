@@ -1,8 +1,8 @@
 import React from "react"
-import Layout from "../../components/Layout"
+import Layout from "../../components/layout"
 import PostEntry from "../../components/PostEntry"
 import Pagination from "../../components/Pagination"
-import SEO from "../../components/SEO"
+import SEO from "../../components/seo"
 
 const Blog = ({ pageContext }) => {
   const { nodes, pageNumber, hasNextPage, itemsPerPage, allPosts } = pageContext

@@ -39,7 +39,7 @@ const Menu = () => {
           const wordPressUrl = data.wpgraphql.generalSettings.url
 
           return (
-            <div style={{ marginBottom: "20px" }}>
+            <div class="navigation" style={{ marginBottom: `4rem` }}>
               {
                 menuItems &&
                 menuItems.map((menuItem) => (

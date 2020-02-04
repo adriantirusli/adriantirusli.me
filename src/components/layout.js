@@ -4,7 +4,6 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
-import Menu from "./Menu"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -28,10 +27,14 @@ const Layout = ({ children }) => {
           paddingTop: 0,
         }}
       >
-        <Menu />
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Dibangun dengan 💜
+        <footer
+          style={{
+            paddingTop: `3rem`,
+            textAlign: `center`
+          }}
+        >
+          © {new Date().getFullYear()}, XOXO
         </footer>
       </div>
     </>
