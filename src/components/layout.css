@@ -636,3 +636,11 @@ footer{
 .navigation a:not(:last-child){
   margin-right: 1.25rem;
 }
+figcaption{
+  font-size: 14px;
+  text-align:center;
+}
+.wp-block-image figure img{
+  display: block;
+  margin: 0 auto;
+}
