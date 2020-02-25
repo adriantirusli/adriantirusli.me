@@ -644,3 +644,11 @@ figcaption{
   display: block;
   margin: 0 auto;
 }
+.wp-block-table{
+  overflow-x: auto;
+}
+@media(max-width:767px){
+  main{
+    display:inline;
+  }
+}
