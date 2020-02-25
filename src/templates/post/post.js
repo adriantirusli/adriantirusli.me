@@ -9,13 +9,14 @@ const Post = ({ pageContext }) => {
   const post = pageContext.post
 
   return (
-    <Layout>
-      <SEO title={post.title} />
-
-      <h1> {post.title} </h1>
-      <div dangerouslySetInnerHTML={{__html: post.content}} />
-
-    </Layout>
+    <div class="blog__post">
+      <Layout>
+        <SEO title={post.title} />
+        
+          <h1> {post.title} </h1>
+          <div dangerouslySetInnerHTML={{__html: post.content}} />
+      </Layout>
+    </div>
   )
 }
 
