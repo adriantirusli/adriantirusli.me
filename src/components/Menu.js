@@ -4,9 +4,6 @@ import { StaticQuery, graphql } from "gatsby"
 
 import MenuItem from "./MenuItem"
 
-/**
- * Define MenuItem fragment and get all primary menu items.
- */
 const MENU_QUERY = graphql`
     fragment MenuItem on WPGraphQL_MenuItem {
         id
