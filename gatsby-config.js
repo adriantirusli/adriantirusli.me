@@ -10,7 +10,7 @@ require("dotenv").config({
 console.log(`This WordPress Endpoint is used: '${process.env.BASE_URL}'`)
 module.exports = {
   siteMetadata: {
-    title: `Blog by Adrianti Rusli`,
+    title: `adriantirusli`,
     description: `Blog dari Adrianti Rusli. Sedikit memuat tentang hal-hal berbau pemrograman dan pandangan tentang kehidupan.`,
     author: `@adriantirusli`,
   },
