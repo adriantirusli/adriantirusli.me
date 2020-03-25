@@ -1,3 +1,5 @@
+const { blogURI } = require("./globals")
+
 let activeEnv =
   process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
 
@@ -7,14 +9,13 @@ require("dotenv").config({
   path: `.env.${activeEnv}`,
 })
 
-let siteUrl = `https://adriantirusli.me/blog/`
-
 console.log(`This WordPress Endpoint is used: '${process.env.BASE_URL}'`)
 module.exports = {
   siteMetadata: {
     title: `adriantirusli`,
     description: `Blog dari Adrianti Rusli. Sedikit memuat tentang hal-hal berbau pemrograman dan pandangan tentang kehidupan.`,
     author: `@adriantirusli`,
+    siteUrl: `https://adriantirusli.me/${blogURI}`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -56,20 +57,22 @@ module.exports = {
             siteMetadata {
               title
               description
+              siteUrl
+              site_url: siteUrl
             }
           }
         }
         `,
         feeds: [
           {
-            serialize: ({ query: { wpgraphql } }) => {
+            serialize: ({ query: { site, wpgraphql } }) => {
               return wpgraphql.posts.nodes.map(node => {
                 return {
                   title: node.title,
                   description: node.content,
                   date: node.modified,
-                  url: siteUrl + node.slug,
-                  guid: siteUrl + node.slug,
+                  url: `${site.siteMetadata.siteUrl}/${node.slug}`,
+                  guid: `${site.siteMetadata.siteUrl}/${node.slug}`,
                 }
               })
             },
