@@ -7,6 +7,8 @@ require("dotenv").config({
   path: `.env.${activeEnv}`,
 })
 
+let siteUrl = `https://adriantirusli.me/blog/`
+
 console.log(`This WordPress Endpoint is used: '${process.env.BASE_URL}'`)
 module.exports = {
   siteMetadata: {
@@ -43,6 +45,52 @@ module.exports = {
         typeName: "WPGraphQL",
         fieldName: "wpgraphql",
         url: `${process.env.BASE_URL}/graphql`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+        {
+          site {
+            siteMetadata {
+              title
+              description
+            }
+          }
+        }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { wpgraphql } }) => {
+              return wpgraphql.posts.nodes.map(node => {
+                return {
+                  title: node.title,
+                  description: node.content,
+                  date: node.modified,
+                  url: siteUrl + node.slug,
+                  guid: siteUrl + node.slug,
+                }
+              })
+            },
+            query: `
+              {
+                wpgraphql {
+                  posts {
+                    nodes {
+                      title
+                      content
+                      slug
+                      modified
+                    }
+                  }
+                }
+              }
+            `,
+            output: "/rss.xml",
+            title: "adriantirusli",
+          },
+        ],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
