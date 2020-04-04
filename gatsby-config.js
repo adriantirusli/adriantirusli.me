@@ -1,3 +1,5 @@
+const { blogURI } = require("./globals")
+
 let activeEnv =
   process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
 
@@ -13,6 +15,7 @@ module.exports = {
     title: `adriantirusli`,
     description: `Blog dari Adrianti Rusli. Sedikit memuat tentang hal-hal berbau pemrograman dan pandangan tentang kehidupan.`,
     author: `@adriantirusli`,
+    siteUrl: `https://adriantirusli.me/${blogURI}`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -43,6 +46,54 @@ module.exports = {
         typeName: "WPGraphQL",
         fieldName: "wpgraphql",
         url: `${process.env.BASE_URL}/graphql`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+        {
+          site {
+            siteMetadata {
+              title
+              description
+              siteUrl
+              site_url: siteUrl
+            }
+          }
+        }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, wpgraphql } }) => {
+              return wpgraphql.posts.nodes.map(node => {
+                return {
+                  title: node.title,
+                  description: node.content,
+                  date: node.modified,
+                  url: `${site.siteMetadata.siteUrl}/${node.slug}`,
+                  guid: `${site.siteMetadata.siteUrl}/${node.slug}`,
+                }
+              })
+            },
+            query: `
+              {
+                wpgraphql {
+                  posts {
+                    nodes {
+                      title
+                      content
+                      slug
+                      modified
+                    }
+                  }
+                }
+              }
+            `,
+            output: "/rss.xml",
+            title: "adriantirusli",
+          },
+        ],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
