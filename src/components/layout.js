@@ -28,16 +28,8 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-
       </div>
-      <footer
-          style={{
-            paddingTop: `3rem`,
-            textAlign: `center`
-          }}
-        >
-          © {new Date().getFullYear()}, XOXO
-        </footer>
+      <footer>© {new Date().getFullYear()}, Crafted with ❤️</footer>
     </>
   )
 }
